@@ -7,7 +7,10 @@ public class Program
         // This project is here for you to use as a "Sandbox" to play around
         // with any code or ideas you have that do not directly apply to
         // one of your projects.
-
-        Console.WriteLine("Hello Sandbox World!");
+        Console.WriteLine("Welcome to the Sandbox!");
+        Console.Write("------------------------------\n");
+Console.Write("What is your name? ");
+string name = Console.ReadLine();
+        Console.WriteLine($"Hello {name}, welcome to the Sandbox World!");
     }
 }

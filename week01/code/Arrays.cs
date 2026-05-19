@@ -1,3 +1,5 @@
+using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.Serialization;
+
 public static class Arrays
 {
     /// <summary>
@@ -47,34 +49,24 @@ public static class Arrays
         // be implemented by another person.
 
 
-        // STEP 1:
-    // Find where the list should be split.
-    // Example:
-    // If the list has 9 items and amount is 3,
-    // then splitIndex = 9 - 3 = 6
-    int splitIndex = data.Count - amount;
 
-    // STEP 2:
-    // Get the last part of the list that will move to the front.
-    // Example: {7, 8, 9}
-    List<int> endPart = data.GetRange(splitIndex, amount);
+ // pseudo code:
+ // step1. receive a list of numbers and an amount to rotate
+ // step 2. find the index at which the rotate will start
+ // step3. split the list at the found index
+ // step4. get the end part of the list that will move to the front and get the begiining part of the lsit that will move behind
+ // step5. clear the original list and rebuild it by adding the end part first begore the beginning part
 
-    // STEP 3:
-    // Get the beginning part of the list.
-    // Example: {1, 2, 3, 4, 5, 6}
-    List<int> beginningPart = data.GetRange(0, splitIndex);
 
-    // STEP 4:
-    // Clear the original list so we can rebuild it.
-    data.Clear();
 
-    // STEP 5:
-    // Add the end part first.
-    data.AddRange(endPart);
 
-    // STEP 6:
-    // Add the beginning part after it.
-    data.AddRange(beginningPart);
+ //code solution
 
+ int splitindex = data.Count - amount; // step 2
+ List<int> beginning = data.GetRange(0, splitindex); // step 4
+ List<int> end = data.GetRange(splitindex, amount); // step 4
+ data.Clear(); // step 5
+ data.AddRange(end); // step 5
+ data.AddRange(beginning); // step 5
     }
 }
